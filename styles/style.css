@@ -16,6 +16,10 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
 }
 
 h1,
@@ -52,23 +56,19 @@ ol {
 
 /* Общий лейаут страницы */
 
-.page {
-  display: flex;
-  box-sizing: border-box;
-  padding-bottom: 100px;
-}
-
 .content {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  flex-direction: row;
   width: 1140px;
   gap: 30px;
+  margin-right: 160px;
 }
 
 .result {
-  height: 456px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 80px;
 }
 
 .result__video-container {
@@ -80,6 +80,7 @@ ol {
   width: 711px;
   height: 386px;
   object-fit: cover;
+  object-position: center;
 }
 
 .search-form {
@@ -87,14 +88,6 @@ ol {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-}
-
-.content__details {
-  display: flex;
-  width: 399px;
-  height: 534px;
-  gap: 26px;
-  flex-direction: column;
 }
 
 .search-form__fieldset {
@@ -130,6 +123,7 @@ ol {
 }
 
 .search-form__textfield {
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
@@ -151,18 +145,13 @@ ol {
 }
 
 /* Граница появляется у label, когда поле input в состояние focus-visible */
-.search-form__label:has(.search-form__textfield:focus-visible) {
+.search-form__label:has(:focus-visible) {
   border-color: #fff;
 }
 
 /* Если навести на чекбокс, будет подчеркнут только текст */
 .search-form__label:hover .search-form__label-text {
   text-decoration: underline;
-}
-
-/* Граница появляется, когда чекбокс в фокусе */
-.search-form__label:has(.search-form__checkbox:focus-visible) {
-  border-color: #fff;
 }
 
 .search-form__checkbox-list {
@@ -197,12 +186,33 @@ ol {
   outline: none;
 }
 
+.content__details {
+  display: flex;
+  width: 399px;
+  gap: 26px;
+  flex-direction: column;
+}
+
 .title {
-  font-family: Oswald;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 75px;
   line-height: 94%;
   text-transform: uppercase;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__list-container {
+  position: relative;
+  width: 399px;
+  height: 298px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .content__list {
@@ -216,15 +226,31 @@ ol {
   padding-right: 3px;
 }
 
-.content__list-container {
-  position: relative;
-  width: 399px;
-  height: 298px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+.content__card-link {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.content__card-link:active {
+  background-color: #545050;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:focus {
+  outline: 0;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px; 
+}
+
+.content__card-link_current {
+  background-color: #545050;
 }
 
 .content__video-card {
@@ -232,7 +258,15 @@ ol {
   align-items: flex-start;
 }
 
+.content__video-card-description-container {
+  flex-grow: 1;
+  min-width: 0;
+  width: 196px;
+  cursor: pointer;
+}
+
 .content__video-card-title {
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
@@ -261,49 +295,10 @@ ol {
   object-fit: cover;
 }
 
-.content__video-card-description-container {
-  flex-grow: 1;
-  min-width: 0;
-  width: 196px;
-  height: 103px;
-  cursor: pointer;
-}
-
-.content__accent {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.content__card-link {
-  display: block;
-  text-decoration: none;
-  color: #fff;
-}
-
-.content__card-link:active {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-.content__card-link:hover {
-  text-decoration: underline;
-}
-
-.content__card-link:focus {
-  outline: 0;
-}
-
-.content__card-link:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 1px; 
-}
-
-.content__card-link_current {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
 .button {
   border: 1px solid #fff;
   background-color: #1B1919;
-  font-family: Fira Sans Condensed;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 100%;
@@ -316,7 +311,7 @@ ol {
 }
 
 .button:active {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #545050;
 }
 
 .button:focus {
